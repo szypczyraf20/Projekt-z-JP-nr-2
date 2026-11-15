@@ -1,16 +1,37 @@
 Object subclass: OdcinekPodrozy [
     | odleglosc_km punkt_poczatkowy punkt_koncowy czas_przeliczony koszt_przeliczony |
+    
     OdcinekPodrozy class >> new [
         |op|
         op := super new.
         op ustawDystans: 0.
         op ustawPunktPoczatkowy: ''.
-        op ustawPunktPoczatkowy: ''.
+        op ustawPunktKoncowy: ''.
         ^op
     ]
 
-    + drugi [
+    + argument [
+        ^argument laczZOdcinkiem: self.
+    ]
 
+    laczZOdcinkiem: poprzedniOdcinek [
+        "Odcinek + Odcinek"
+        | nowaTrasa nowaKolekcja |
+        nowaKolekcja := OrderedCollection with: poprzedniOdcinek with: self.
+        nowaTrasa := Trasa new.
+        nowaTrasa odcinki: nowaKolekcja.
+        ^nowaTrasa
+    ]
+
+    laczZTrasa: staraTrasa [
+        "Trasa + Odcinek"
+        | nowaTrasa nowaKolekcja |
+        nowaKolekcja := OrderedCollection new.
+        nowaKolekcja addAll: staraTrasa odcinki.
+        nowaKolekcja add: self.
+        nowaTrasa := Trasa new.
+        nowaTrasa odcinki: nowaKolekcja.
+        ^nowaTrasa
     ]
 
     ustawDystans: liczba [
