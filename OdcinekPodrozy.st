@@ -1,5 +1,5 @@
 Object subclass: OdcinekPodrozy [
-    | odleglosc_km punkt_poczatkowy punkt_koncowy czas_przeliczony koszt_przeliczony |
+    | odleglosc_km punkt_poczatkowy punkt_koncowy czas_przeliczony koszt_przeliczony czas_przesiadki|
     
     OdcinekPodrozy class >> new [
         |op|
@@ -7,6 +7,7 @@ Object subclass: OdcinekPodrozy [
         op ustawDystans: 0.
         op ustawPunktPoczatkowy: ''.
         op ustawPunktKoncowy: ''.
+        op ustawCzasPrzesiadki: 0.
         ^op
     ]
 
@@ -43,7 +44,12 @@ Object subclass: OdcinekPodrozy [
     ustawPunktKoncowy: nazwa [
         punkt_koncowy := nazwa.
     ]
+    ustawCzasPrzesiadki: liczba [
+        czas_przesiadki := liczba.
+    ]
 
+    czas [ ^nil ]
+    czas_przesiadki [ ^czas_przesiadki ]
     opis [ ^'odcinek' ]
     dystans [ ^odleglosc_km ]
     koszt [ ^0 ]

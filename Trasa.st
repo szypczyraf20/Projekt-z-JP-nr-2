@@ -47,6 +47,7 @@ Object subclass: Trasa [
         | suma |
         suma := 0.
         odcinki do: [:o | suma := suma + o czas].
+	odcinki do: [:o | suma := suma + o czas_przesiadki].
         ^suma
     ]
 
@@ -64,6 +65,13 @@ Object subclass: Trasa [
         ^suma
     ]
 
+    czas_przesiadki [
+    	| suma |
+	suma := 0.
+	odcinki do: [:o | suma := suma + o czas_przesiadki].
+	^suma
+    ]
+
     drukuj [
       |i|
       i:=0.
@@ -73,10 +81,13 @@ Object subclass: Trasa [
       show: odcinek pp; show: ' -> '; show: odcinek pk; cr;
       show: odcinek dystans printString, ' km',
       ' | ', odcinek czas printString, ' min',
+      ' | ', odcinek czas_przesiadki printString, ' min',
       ' | ', odcinek koszt printString, ' zl'; cr].
       Transcript show: '-------------------------'; cr.
       Transcript show: 'Dystans: ', self dystans printString, ' km'; cr.
       Transcript show: 'Czas: ', self czas printString, ' min'; cr.
+      Transcript show: 'Czas przesiadki: ',
+      self czas_przesiadki printString, ' min'; cr.
       Transcript show: 'Koszt: ', self koszt printString, ' zl'; cr.
       Transcript show: '-------------------------'; cr.
     ]
