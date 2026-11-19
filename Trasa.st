@@ -64,10 +64,29 @@ Object subclass: Trasa [
         ^suma
     ]
 
+    drukuj [
+      |i|
+      i:=0.
+      Transcript show: '--------- Trasa ---------'; cr.
+      odcinki do: [:odcinek |
+      i:=i+1. Transcript show: i printString, '. ', odcinek opis; cr;
+      show: odcinek pp; show: ' -> '; show: odcinek pk; cr;
+      show: odcinek dystans printString, ' km',
+      ' | ', odcinek czas printString, ' min',
+      ' | ', odcinek koszt printString, ' zl'; cr].
+      Transcript show: '-------------------------'; cr.
+      Transcript show: 'Dystans: ', self dystans printString, ' km'; cr.
+      Transcript show: 'Czas: ', self czas printString, ' min'; cr.
+      Transcript show: 'Koszt: ', self koszt printString, ' zl'; cr.
+      Transcript show: '-------------------------'; cr.
+    ]
+
+    "Punkt początkowy"
     pp [
         ^odcinki isEmpty ifTrue: [''] ifFalse: [odcinki first pp]
     ]
 
+    "Punkt końcowy"
     pk [
         ^odcinki isEmpty ifTrue: [''] ifFalse: [odcinki last pk]
     ]

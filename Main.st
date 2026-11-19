@@ -15,18 +15,17 @@ Object extend [
 
 
 | odcinek_pieszy odcinek_rowerowy odcinek_autobusowy |
-odcinek_pieszy := OdcinekPieszy new ustawDystans: 15; ustawPunktPoczatkowy: 'Dom'; ustawPunktKoncowy: 'PG'.
-odcinek_rowerowy := OdcinekRowerowy new ustawDystans: 15; ustawPunktPoczatkowy: 'Dom'; ustawPunktKoncowy: 'PG'.
-odcinek_autobusowy := OdcinekAutobusowy new ustawDystans: 15; ustawPunktPoczatkowy: 'Dom'; ustawPunktKoncowy: 'PG'.
+odcinek_pieszy := OdcinekPieszy new ustawDystans: 15; ustawPunktPoczatkowy: 'Dom'; ustawPunktKoncowy: 'Ilawa'.
+odcinek_autobusowy := OdcinekAutobusowy new ustawDystans: 15; ustawPunktPoczatkowy: 'Ilawa'; ustawPunktKoncowy: 'Gdansk Wrzeszcz'.
+odcinek_rowerowy := OdcinekRowerowy new ustawDystans: 15; ustawPunktPoczatkowy: 'Gdansk Wrzeszcz'; ustawPunktKoncowy: 'PG'.
 
-Transcript show: 'Z ',odcinek_pieszy pp, ' do ', odcinek_pieszy pk, ':'; cr.
-Transcript show: odcinek_pieszy opis, ': ', odcinek_pieszy czas printString, ' min. ', odcinek_pieszy koszt printString, 'zl'; cr.
-Transcript show: odcinek_rowerowy opis, ': ', odcinek_rowerowy czas printString, ' min. ', odcinek_rowerowy koszt printString, 'zl'; cr.
-Transcript show: odcinek_autobusowy opis, ': ', odcinek_autobusowy czas printString, ' min. ', odcinek_autobusowy koszt printString, 'zl'; cr.
+"Transcript show: 'Z ',odcinek_pieszy pp, ' do ', odcinek_pieszy pk, ':'; cr."
+"Transcript show: odcinek_pieszy opis, ': ', odcinek_pieszy czas printString, ' min. ', odcinek_pieszy koszt printString, 'zl'; cr."
+"Transcript show: odcinek_rowerowy opis, ': ', odcinek_rowerowy czas printString, ' min. ', odcinek_rowerowy koszt printString, 'zl'; cr."
+"Transcript show: odcinek_autobusowy opis, ': ', odcinek_autobusowy czas printString, ' min. ', odcinek_autobusowy koszt printString, 'zl'; cr."
 
 | trasa1 trasa2 pelna_trasa |
-trasa1 := odcinek_pieszy + odcinek_rowerowy.
-trasa2 := trasa1 + odcinek_autobusowy.
+trasa1 := odcinek_pieszy + odcinek_autobusowy.
+trasa2 := odcinek_rowerowy.
 pelna_trasa := trasa1 + trasa2.
-Transcript show: 'Z ', pelna_trasa pp, ' do ', pelna_trasa pk, ' :'; cr.
-Transcript show: pelna_trasa opis, ' : ', pelna_trasa czas printString, ' min. ', pelna_trasa koszt printString, 'zl'; cr.
+pelna_trasa drukuj.
