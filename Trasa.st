@@ -47,7 +47,7 @@ Object subclass: Trasa [
         | suma |
         suma := 0.
         odcinki do: [:o | suma := suma + o czas].
-	odcinki do: [:o | suma := suma + o czas_przesiadki].
+	    odcinki do: [:o | suma := suma + o czas_przesiadki].
         ^suma
     ]
 
@@ -106,3 +106,4 @@ Object subclass: Trasa [
         ^'trasa złożona z ', odcinki size printString, ' odcinków'
     ]
 ]
+
