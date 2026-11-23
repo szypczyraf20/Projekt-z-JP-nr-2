@@ -17,13 +17,14 @@ OdcinekPodrozy subclass: OdcinekAutobusowy [
         ^czas_przeliczony + czas_opoznienia
     ]
     emisjaCO2 [
-      emisjaCO2 := odleglosc_km * 0.2.
+      emisjaCO2 := odleglosc_km * 200.
       ^emisjaCO2
     ]
     opis [ ^'autobus' ]
     koszt [
-        koszt_przeliczony := odleglosc_km * 0.5.
+        koszt_przeliczony := odleglosc_km * 50.
         ^koszt_przeliczony
     ]
 ]
+
 

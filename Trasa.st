@@ -79,6 +79,15 @@ Object subclass: Trasa [
       ^suma
     ]
 
+    formatujKoszt: kosztWGroszach [
+      | zlotych grosze |
+      zlotych := kosztWGroszach // 100.
+      grosze := kosztWGroszach \\ 100.
+      grosze < 10
+        ifTrue: [^zlotych printString, ',0', grosze printString]
+        ifFalse: [^zlotych printString, ',', grosze printString].
+    ]
+
     drukuj [
       |i|
       i:=0.
@@ -89,15 +98,15 @@ Object subclass: Trasa [
       show: odcinek dystans printString, ' km',
       ' | ', odcinek czas printString, ' min',
       ' | ', odcinek czas_przesiadki printString, ' min',
-      ' | ', odcinek emisjaCO2 printString, ' kg',
-      ' | ', odcinek koszt printString, ' zl'; cr].
+      ' | ', odcinek emisjaCO2 printString, ' g',
+      ' | ', (self formatujKoszt: odcinek koszt), ' zl'; cr].
       Transcript show: '-------------------------'; cr.
       Transcript show: 'Dystans: ', self dystans printString, ' km'; cr.
       Transcript show: 'Czas: ', self czas printString, ' min'; cr.
       Transcript show: 'Czas przesiadki: ',
       self czas_przesiadki printString, ' min'; cr.
-      Transcript show: 'Koszt: ', self koszt printString, ' zl'; cr.
-      Transcript show: 'Emisja CO2: ', self emisjaCO2 printString, ' kg'; cr.
+      Transcript show: 'Koszt: ', (self formatujKoszt: self koszt), ' zl'; cr.
+      Transcript show: 'Emisja CO2: ', self emisjaCO2 printString, ' g'; cr.
       Transcript show: '-------------------------'; cr.
     ]
 
@@ -115,4 +124,5 @@ Object subclass: Trasa [
         ^'trasa złożona z ', odcinki size printString, ' odcinków'
     ]
 ]
+
 

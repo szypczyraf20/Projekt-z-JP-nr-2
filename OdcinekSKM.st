@@ -17,9 +17,14 @@ OdcinekPodrozy subclass: OdcinekSKM [
         ^czas_przeliczony + czas_opoznienia
     ]
     opis [ ^'SKM' ]
+    emisjaCO2 [
+      emisjaCO2 := odleglosc_km * 300.
+      ^emisjaCO2
+    ]
     koszt [
-        koszt_przeliczony := odleglosc_km * 1.5.
+        koszt_przeliczony := odleglosc_km * 150.
         ^koszt_przeliczony
     ]
 ]
+
 

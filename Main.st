@@ -27,7 +27,7 @@ odcinek_pieszy2 := OdcinekPieszy new ustawDystans: 1; ustawPunktPoczatkowy: 'PG'
 
 | trasa1 trasa2 pelna_trasa |
 trasa1 := odcinek_pieszy + odcinek_autobusowy.
-trasa2 := odcinek_rowerowy + odcinek_skm + odcinek_pieszy2.
+trasa2 := odcinek_skm+ odcinek_rowerowy + odcinek_pieszy2.
 planer dodajTrase: trasa1; dodajTrase: trasa2.
 pelna_trasa := trasa1 + trasa2.
 planer drukujTrasyEmisja.
