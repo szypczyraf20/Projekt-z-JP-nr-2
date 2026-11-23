@@ -1,5 +1,5 @@
 Object subclass: OdcinekPodrozy [
-    | odleglosc_km punkt_poczatkowy punkt_koncowy czas_przeliczony koszt_przeliczony czas_przesiadki czas_opoznienia|
+    | odleglosc_km punkt_poczatkowy punkt_koncowy czas_przeliczony koszt_przeliczony czas_przesiadki emisjaCO2 czas_opoznienia |
     
     OdcinekPodrozy class >> new [
         |op|
@@ -8,7 +8,8 @@ Object subclass: OdcinekPodrozy [
         op ustawPunktPoczatkowy: ''.
         op ustawPunktKoncowy: ''.
         op ustawCzasPrzesiadki: 0.
-	op losujOpoznienie.
+        op ustawEmisjeCO2: 0.
+	      op losujOpoznienie.
         ^op
     ]
 
@@ -48,6 +49,9 @@ Object subclass: OdcinekPodrozy [
     ustawCzasPrzesiadki: liczba [
         czas_przesiadki := liczba.
     ]
+    ustawEmisjeCO2: liczba [
+        emisjaCO2 := liczba.
+    ]
 
     losujOpoznienie [
 	czas_opoznienia := 0.
@@ -55,6 +59,7 @@ Object subclass: OdcinekPodrozy [
 
     czas [ ^nil ]
     czas_przesiadki [ ^czas_przesiadki ]
+    emisjaCO2 [ ^emisjaCO2 ]
     opis [ ^'odcinek' ]
     dystans [ ^odleglosc_km ]
     koszt [ ^0 ]

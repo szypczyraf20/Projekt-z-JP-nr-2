@@ -67,9 +67,16 @@ Object subclass: Trasa [
 
     czas_przesiadki [
     	| suma |
-	suma := 0.
-	odcinki do: [:o | suma := suma + o czas_przesiadki].
-	^suma
+      suma := 0.
+      odcinki do: [:o | suma := suma + o czas_przesiadki].
+      ^suma
+    ]
+
+    emisjaCO2 [
+      | suma |
+      suma := 0.
+      odcinki do: [:o | suma := suma + o emisjaCO2].
+      ^suma
     ]
 
     drukuj [
@@ -82,6 +89,7 @@ Object subclass: Trasa [
       show: odcinek dystans printString, ' km',
       ' | ', odcinek czas printString, ' min',
       ' | ', odcinek czas_przesiadki printString, ' min',
+      ' | ', odcinek emisjaCO2 printString, ' kg',
       ' | ', odcinek koszt printString, ' zl'; cr].
       Transcript show: '-------------------------'; cr.
       Transcript show: 'Dystans: ', self dystans printString, ' km'; cr.
@@ -89,15 +97,16 @@ Object subclass: Trasa [
       Transcript show: 'Czas przesiadki: ',
       self czas_przesiadki printString, ' min'; cr.
       Transcript show: 'Koszt: ', self koszt printString, ' zl'; cr.
+      Transcript show: 'Emisja CO2: ', self emisjaCO2 printString, ' kg'; cr.
       Transcript show: '-------------------------'; cr.
     ]
 
-    "Punkt początkowy"
+    "Punkt poczatkowy"
     pp [
         ^odcinki isEmpty ifTrue: [''] ifFalse: [odcinki first pp]
     ]
 
-    "Punkt końcowy"
+    "Punkt koncowy"
     pk [
         ^odcinki isEmpty ifTrue: [''] ifFalse: [odcinki last pk]
     ]
