@@ -91,7 +91,7 @@ Object subclass: Trasa [
     drukuj [
       |i|
       i:=0.
-      Transcript show: '--------- Trasa ---------'; cr.
+      Transcript show: '--------- ', self opis, ' ---------'; cr.
       odcinki do: [:odcinek |
       i:=i+1. Transcript show: i printString, '. ', odcinek opis; cr;
       show: odcinek pp; show: ' -> '; show: odcinek pk; cr;
@@ -121,7 +121,7 @@ Object subclass: Trasa [
     ]
 
     opis [
-        ^'trasa złożona z ', odcinki size printString, ' odcinków'
+        ^'Dostawa: ', self pp, ' -> ', self pk
     ]
 ]
 
