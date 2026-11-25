@@ -19,7 +19,10 @@ Object subclass: Trasa [
     ]
 
     + argument [
-        ^argument laczZTrasa: self.
+        (argument isKindOf: Trasa)
+            ifTrue: [^argument laczZTrasa: self].
+        (argument isKindOf: OdcinekPodrozy)
+            ifTrue: [^self laczZOdcinkiem: argument].
     ]
 
     laczZOdcinkiem: odcinek [
